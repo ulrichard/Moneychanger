@@ -1,9 +1,4 @@
 
-find_package(Jsoncpp    REQUIRED)
-find_package(XMLRPC     REQUIRED)
-
-include_directories(${Jsoncpp_INCLUDE_DIRS})
-include_directories(${XMLRPC_INCLUDE_DIRS})
 
 add_library(moneychanger-core 
 	applicationmc.cpp
