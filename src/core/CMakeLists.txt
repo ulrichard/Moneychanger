@@ -1,6 +1,6 @@
 
 
-add_library(moneychanger-core 
+add_library(moneychanger-core SHARED
 	applicationmc.cpp
     filedownloader.cpp
     httpinterface.cpp

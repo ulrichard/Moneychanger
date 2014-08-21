@@ -3,7 +3,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed.
 set(CMAKE_AUTOMOC ON)
 # We need add -DQT_WIDGETS_LIB when using QtWidgets in Qt 5.
-ADD_DEFINITIONS(${Qt5Widgets_DEFINITIONS})
+add_definitions(${Qt5Widgets_DEFINITIONS})
 
 
 set(GuiDialogs
@@ -132,17 +132,17 @@ set(gui_src
 )
 
 
-FOREACH(DlgName  ${GuiDialogs})
+foreach(DlgName  ${GuiDialogs})
     qt5_wrap_ui(ui_${DlgName}.h ui/${DlgName}.ui)
     SET(gui_hdrs  ${gui_hdrs}  ui_${DlgName}.h)
     SET(gui_res   ${gui_res}   ui/${DlgName}.ui)
-ENDFOREACH(UnitName)
+endforeach(DlgName)
 
-FOREACH(WidgetName  ${GuiWidgets})
+foreach(WidgetName  ${GuiWidgets})
     qt5_wrap_ui(ui_${WidgetName}.h widgets/${WidgetName}.ui)
     SET(gui_hdrs  ${gui_hdrs}  ui_${WidgetName}.h)
     SET(gui_res   ${gui_res}   widgets/${WidgetName}.ui)
-ENDFOREACH(UnitName)
+endforeach(WidgetName)
 
 add_executable(moneychanger-qt
     ${gui_src}
@@ -152,6 +152,9 @@ add_executable(moneychanger-qt
 
 target_link_libraries(moneychanger-qt
     moneychanger-core
+    ${core}
+    ${ext}
+    ${api}
     ${XMLRPC_LIBRARIES}
     ${Qt5Core_LIBRARIES}
     ${Qt5Widgets_LIBRARIES}
@@ -160,4 +163,6 @@ target_link_libraries(moneychanger-qt
     ${Qt5Widgets_LIBRARIES}
     ${Qt5Sql_LIBRARIES}
 )
+
+install(TARGETS moneychanger-qt DESTINATION bin)
 
