@@ -27,3 +27,9 @@ target_link_libraries(moneychanger-core
     ${XMLRPC_LIBRARIES}
 )
 
+if(NOT WIN32)
+  include(GNUInstallDirs)
+  install(TARGETS moneychanger-core
+          DESTINATION ${CMAKE_INSTALL_LIBDIR}
+          COMPONENT)
+endif()
